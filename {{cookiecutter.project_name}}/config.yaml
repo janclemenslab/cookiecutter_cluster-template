@@ -1,0 +1,2 @@
+CLUSTER_USER: {{cookiecutter.cluster_user_name}}
+CONDA_ENV_NAME: {{cookiecutter.conda_env_name}}
