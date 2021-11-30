@@ -95,5 +95,18 @@ def submit(script_name, env_name=None):
     run(cmd)
 
 
+def cancel(job_id=None):
+    """Cancel one job by ID or all jobs on the cluster.
+
+    Args:
+        job_id ([type], optional): [description]. Defaults to None.
+    """
+    if job_id is None:
+        run('scancel -u $USER')
+    else:
+        run(f'scancel {job_id}')
+
+
 def status():
+    """Display status of all running jobs on the cluster."""
     run(f'squeue -u {USER}')
