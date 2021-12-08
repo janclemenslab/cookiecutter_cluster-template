@@ -2,6 +2,8 @@ from fabric.api import run, local, env
 import os
 import yaml
 from pprint import pprint
+from typing import Optional
+
 
 print('Loading config from `config.yaml`')
 with open('config.yaml', 'r') as f:
@@ -56,12 +58,12 @@ def make_env_cluster(env_file="env.yaml", env_name=None):
             cd {FOLDER};
             conda env create -f {env_file} -n {env_name}""")
 
+
 def make_env_local(env_file="env.yaml", env_name=None):
     if env_name is None:
         env_name = env_vars['CONDA_ENV_NAME']
 
-    run(f"""cd {FOLDER};
-            conda env create -f {env_file} -n {env_name}""")
+    local(f"conda env create -f {env_file} -n {env_name}")
 
 
 def init():
@@ -74,7 +76,7 @@ def init():
     push()
 
 
-def submit(script_name, env_name=None):
+def submit(script_name: str = 'script.sh', env_name: Optional[str] = None):
     """Submit script to cluster.
 
     Usage:
