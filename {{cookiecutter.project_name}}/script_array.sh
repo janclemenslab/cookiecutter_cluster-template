@@ -21,6 +21,6 @@ conda activate $CONDA_ENV_NAME
 cd /scratch/$CLUSTER_USER/$CLUSTER_FOLDER
 
 
-# CHANGE THIS TO YOU LIKING
+# CHANGE THIS TO YOUR LIKING
 # Currently, this runs script.py
 python3 script_array.py
